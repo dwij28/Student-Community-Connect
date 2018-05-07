@@ -20,6 +20,18 @@
 
         }
 
+        public function postPGVacancy($db) {
+            
+            $query = "INSERT INTO PGVacancy (pgName, pgType, location, rent, vacancy, owner) 
+                      VALUES('$this->pgName', '$this->pgType', '$this->location',
+                        $this->rent, $this->vacancy, '$this->owner')";
+            mysqli_query($db, $query);
+            header("location: done.php");
+
+        }
+
+
+
     }
 
 ?>
