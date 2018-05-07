@@ -34,11 +34,8 @@
 			$rent, $vacancy, $owner, $db) {
 
 	    	$newpg = new PG($pgName, $pgType, $location, $rent, $vacancy, $owner);
-	    	
-	    	$query = "INSERT INTO PGVacancy (pgName, pgType, location, rent, vacancy, owner) 
-		  			  VALUES('$pgName', '$pgType', '$location', $rent, $vacancy, '$owner')";
-		  	mysqli_query($db, $query);
-		  	header("location: done.php");
+
+	    	$newpg->postPGVacancy($db);
 
 	    }
 
