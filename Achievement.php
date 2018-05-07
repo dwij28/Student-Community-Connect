@@ -12,6 +12,16 @@
 
         }
 
+        public function create($db) {
+
+			$query = "INSERT INTO Achievement (collegeName, details) 
+		  			VALUES('$this->collegeName', '$this->details')";
+	    	
+		  	mysqli_query($db, $query);
+		  	header("location: done.php");
+		  	return true;
+	    }
+
     }
 
 ?>

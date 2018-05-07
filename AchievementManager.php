@@ -25,13 +25,11 @@
 
 	    	$newachievement = new Achievement($collegeName, $details);
 
-			$query = "INSERT INTO Achievement (collegeName, details) 
-		  			VALUES('$collegeName', '$details')";
-	    	
-		  	mysqli_query($db, $query);
-		  	header("location: done.php");
+	    	$newachievement->create($db);
 
 	    }
+
+	    
 
 	}
 
