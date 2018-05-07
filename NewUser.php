@@ -89,7 +89,7 @@
 					<select name = "type" class="form-control">
 						<option value = "" disabled selected>User Type</option>
 						<option value = "student">Student</option>
-						<option value = "eventorganizer">Event Organiser</option>
+						<option value = "eventorganizer">Event Organizer</option>
 						<option value = "cr">College Representative</option>
 					</select>
 				</div>
