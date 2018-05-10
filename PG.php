@@ -30,6 +30,16 @@
 
         }
 
+        public function createNeedPG($db) {
+            
+            $query = "INSERT INTO NeedPG (pgType, location, rent, vacancy, owner) 
+                      VALUES('$this->pgType', '$this->location',
+                        $this->rent, $this->vacancy, '$this->owner')";
+            mysqli_query($db, $query);
+            header("location: done.php");
+
+        }
+
 
 
     }

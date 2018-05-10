@@ -39,6 +39,37 @@
 
 	    }
 
+	    public function validateNeedPG($pgType, $location, $rent, $vacancy, $owner, $db) {
+	    	
+	    	$errors = array();
+
+	    	if (empty($pgType)) { array_push($errors, "PG Type is required"); }
+
+	    	if (empty($location)) { array_push($errors, "Location is required"); }
+
+	    	if (empty($rent)) { array_push($errors, "Rent is required"); }
+	    	if (is_numeric($rent) === false) { array_push($errors, "Rent must be a number"); }
+
+	    	if (empty($vacancy)) { array_push($errors, "Number of People is required"); }
+	    	if (is_numeric($vacancy) === false) { array_push($errors, "Number of People must be an integer"); }
+
+	    	if (empty($owner) || isStudent($owner, $db) ===  false) {
+	    		array_push($errors, "Please Login as Student to post an item for selling.");
+	    	}
+
+			return $errors;
+
+	    }
+
+	    public function createNeedPG($pgType, $location,
+			$rent, $vacancy, $owner, $db) {
+
+	    	$newpg = new PG("", $pgType, $location, $rent, $vacancy, $owner);
+
+	    	$newpg->createNeedPG($db);
+
+	    }
+
 	    /*
 	    public function validate_need_pg($pgType, $location, $budget, $num_of_people, $db) {
 	    	
