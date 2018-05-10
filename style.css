@@ -1,0 +1,35 @@
+body {
+	background-color: #04686d;
+}
+
+h3 {
+	color: #e59a04;
+	font-weight: bolder;
+}
+
+.error {
+	border-width:2px;
+	border-style:solid;
+	border-color:black;
+	padding-top: 10px;
+	color: #dd1111;
+	font-weight: bolder;
+	padding-left: 35%;
+}
+
+form {
+	margin: 0 auto;
+    width: 75%;
+}
+
+.forms {
+	margin: 0 auto;
+    width: 50%;
+    background-color: #c4edd0;
+}
+
+.post_pg_forms {
+	margin: 0 auto;
+    width: 10%;
+    background-color: #c4edd0;
+}
