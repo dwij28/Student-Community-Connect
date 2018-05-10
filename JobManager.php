@@ -36,6 +36,32 @@
 
 	    }
 
+	    public function validateNeedJob($location, $interest, $workingHours, $owner, $db) {
+	    	
+	    	$errors = array();
+
+	    	if (empty($location)) { array_push($errors, "Location is required"); }
+
+	    	if (empty($interest)) { array_push($errors, "Interest is required"); }
+
+	    	if (empty($workingHours)) { array_push($errors, "Working Hours is required"); }
+
+	    	if (empty($owner) || isStudent($owner, $db) === false) {
+	    		array_push($errors, "Please Login as Student to post for giving coaching.");
+	    	}
+	    	
+	    	return $errors;
+
+	    }
+
+	    public function createNeedJob($location, $interest, $workingHours, $owner, $db) {
+
+	    	$newjob = new Job($location, $interest, 0, 0, $workingHours, $owner);
+
+	    	$newjob->createNeedJob($db);
+
+	    }
+
 	}
 
 ?>

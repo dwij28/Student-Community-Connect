@@ -24,6 +24,18 @@
 
             $query = "INSERT INTO JobVacancy (location, type, salary, daysPerWeek, hoursPerDay, owner) 
                       VALUES('$this->location', '$this->type', $this->salary, $this->daysPerWeek, $this->hoursPerDay, '$this->owner')";
+
+            mysqli_query($db, $query);
+            header("location: done.php");
+
+            return true;
+
+        }
+
+        public function createNeedJob($db) {
+
+            $query = "INSERT INTO NeedJob (location, interest, workingHours, owner) 
+                      VALUES('$this->location', '$this->type', $this->hoursPerDay, '$this->owner')";
                       
             mysqli_query($db, $query);
             header("location: done.php");
