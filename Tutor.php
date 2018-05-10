@@ -31,6 +31,17 @@
 
         }
 
+        public function TakeCoaching($numOfStudents, $db) {
+
+            $query = "INSERT INTO TakeCoaching (location, subject, numOfStudents, owner) 
+                      VALUES('$this->location', '$this->subject', $numOfStudents, '$this->owner')";
+            mysqli_query($db, $query);
+            header("location: done.php");
+
+            return true;
+
+        }
+
     }
 
 ?>
