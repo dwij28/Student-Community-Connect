@@ -18,6 +18,16 @@
 
         }
 
+        public function createNeed($db) {
+            
+            $query = "INSERT INTO NeedItem (itemName, itemType, owner) 
+                      VALUES('$this->itemName', '$this->itemType', '$this->owner')";
+            if (mysqli_query($db, $query))
+                header("location: done.php");
+            else header("location: pleaselogin.php");
+
+        }
+
     }
 
 ?>

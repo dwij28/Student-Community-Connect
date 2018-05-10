@@ -43,6 +43,30 @@
 
 	    }
 
+	    public function validateNeed($itemName, $itemType, $owner, $db) {
+	    	
+	    	$errors = array();
+
+	    	if (empty($itemName)) { array_push($errors, "Item Name is required"); }
+
+	    	if (empty($itemType)) { array_push($errors, "Item Type is required"); }
+
+	    	if (empty($owner) || isStudent($owner, $db) ===  false) {
+	    		array_push($errors, "Please Login as Student to post an item for selling.");
+	    	}
+	    	
+	    	return $errors;
+
+	    }
+
+	    public function createNeed($itemName, $itemType, $owner, $db) {
+
+	    	$newitem = new Item($itemName, $itemType, 0, 0, $owner);
+			
+			$newitem->createNeed($db);
+
+	    }
+
 	}
 
 ?>
