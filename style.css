@@ -32,6 +32,16 @@ h4 {
 	padding-left: 35%;
 }
 
+.viewpost {
+	border-width:2px;
+	border-style: solid;
+	border-color:black;
+	padding-top: 10px;
+	color: #e7f943;
+	font-weight: bolder;
+	padding-left: 45%;
+}
+
 form {
 	margin: 0 auto;
     width: 75%;

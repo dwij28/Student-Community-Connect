@@ -8,6 +8,8 @@
 	require_once 'dbconnect.php';
 	require_once 'PG.php';
 	require_once 'Item.php';
+	require_once 'Tutor.php';
+	require_once 'Job.php';
 
 	//session_start();
 	//var_dump($_SESSION);
@@ -31,7 +33,7 @@
 
 		<h3 class = "text-center">View Posts by <?php echo $owner; ?></h3>
 
-		<div>
+		<div class = "viewpost">
 			<h4> PG Vacancy Posts </h4>
 			<?php
 
@@ -78,9 +80,7 @@
 			?>
 		</div>
 
-		<hr />
-
-		<div>
+		<div class = "viewpost">
 			<h4> Need PG Posts </h4>
 			<?php
 
@@ -126,9 +126,7 @@
 			?>
 		</div>
 
-		<hr />
-
-		<div>
+		<div class = "viewpost">
 			<h4> Sell Item Posts </h4>
 			<?php
 
@@ -171,9 +169,7 @@
 			?>
 		</div>
 
-		<hr />
-
-		<div>
+		<div class = "viewpost">
 			<h4> Need Item Posts </h4>
 			<?php
 
@@ -207,6 +203,195 @@
 							echo "Item Price: " . $x->itemPrice;
 							$delStr .= "itemPrice = $x->itemPrice";
 							echo "<br />";*/
+							echo "<a href = \"DeletePosts.php?query=$delStr\">Delete This Post</a>";
+							echo "<br />";
+						echo "</p>";
+						//echo $delStr;
+					echo "</div>";
+				}
+			?>
+		</div>
+
+		<div class = "viewpost">
+			<h4> Provide Coaching Posts </h4>
+			<?php
+
+				$results = array();
+
+		    	$query = "SELECT * FROM GiveCoaching where owner = '" . $owner . "'";
+			  	$data = mysqli_query($db, $query);
+			  	//var_dump($data);
+			  	if (mysqli_num_rows($data) > 0) {
+			  		while ($row = mysqli_fetch_assoc($data)) {
+			  			$resulttutor = new Tutor(
+			  				$row['location'], $row['subject'], $row['fees'],
+			  				$row['daysPerWeek'], $row['session'], $row['owner']
+			  				);
+			  			array_push($results, $resulttutor);
+			  		}
+			  	}
+
+				foreach ($results as $x) {
+					$delStr = "DELETE FROM GiveCoaching where owner = '" . $owner . "' AND ";
+					echo '<div class = "">';
+						echo "<p>";
+							echo "Location: " . ucfirst($x->location);
+							$delStr .= "location = '$x->location' AND ";
+							echo "<br />";
+							echo "Subject: " . ucfirst($x->subject);
+							$delStr .= "subject = '$x->subject' AND ";
+							echo "<br />";
+							echo "Fees: " . $x->fees;
+							$delStr .= "fees = $x->fees AND ";
+							echo "<br />";
+							echo "Days / Week: " . $x->daysPerWeek;
+							$delStr .= "daysPerWeek = $x->daysPerWeek AND ";
+							echo "<br />";
+							echo "Session: " . ucfirst($x->session);
+							$delStr .= "session = '$x->session'";
+							echo "<br />";
+							echo "<a href = \"DeletePosts.php?query=$delStr\">Delete This Post</a>";
+							echo "<br />";
+						echo "</p>";
+						//echo $delStr;
+					echo "</div>";
+				}
+			?>
+		</div>
+
+		<div class = "viewpost">
+			<h4> Need Coaching Posts </h4>
+			<?php
+
+				$results = array();
+
+		    	$query = "SELECT * FROM TakeCoaching where owner = '" . $owner . "'";
+			  	$data = mysqli_query($db, $query);
+			  	//var_dump($data);
+			  	if (mysqli_num_rows($data) > 0) {
+			  		while ($row = mysqli_fetch_assoc($data)) {
+			  			$resulttutor = new Tutor(
+			  				$row['location'], $row['subject'], $row['numOfStudents'],
+			  				0, "", $row['owner']
+			  				);
+			  			array_push($results, $resulttutor);
+			  		}
+			  	}
+
+				foreach ($results as $x) {
+					$delStr = "DELETE FROM TakeCoaching where owner = '" . $owner . "' AND ";
+					echo '<div class = "">';
+						echo "<p>";
+							echo "Location: " . ucfirst($x->location);
+							$delStr .= "location = '$x->location' AND ";
+							echo "<br />";
+							echo "Subject: " . ucfirst($x->subject);
+							$delStr .= "subject = '$x->subject'";
+							echo "<br />";
+							echo "Number Of Students: " . $x->fees;
+							//$delStr .= "fees = $x->fees AND ";
+							echo "<br />";
+							/*
+							echo "Days / Week: " . $x->daysPerWeek;
+							$delStr .= "daysPerWeek = $x->daysPerWeek AND ";
+							echo "<br />";
+							echo "Session: " . ucfirst($x->session);
+							$delStr .= "session = '$x->session'";
+							echo "<br />";*/
+							echo "<a href = \"DeletePosts.php?query=$delStr\">Delete This Post</a>";
+							echo "<br />";
+						echo "</p>";
+						//echo $delStr;
+					echo "</div>";
+				}
+			?>
+		</div>
+
+		<div class = "viewpost">
+			<h4> Job Availability Posts </h4>
+			<?php
+
+				$results = array();
+
+		    	$query = "SELECT * FROM JobVacancy where owner = '" . $owner . "'";
+			  	$data = mysqli_query($db, $query);
+			  	//var_dump($data);
+			  	if (mysqli_num_rows($data) > 0) {
+			  		while ($row = mysqli_fetch_assoc($data)) {
+			  			$resultpg = new Job(
+			  				$row['location'], $row['type'], $row['salary'],
+			  				$row['daysPerWeek'], $row['hoursPerDay'], $row['owner']
+			  				);
+			  			array_push($results, $resultpg);
+			  		}
+			  	}
+
+				foreach ($results as $x) {
+					$delStr = "DELETE FROM JobVacancy where owner = '" . $owner . "' AND ";
+					echo '<div class = "">';
+						echo "<p>";
+							echo "Location: " . $x->location;
+							$delStr .= "location = '$x->location' AND ";
+							echo "<br />";
+							echo "Type: " . ucfirst($x->type);
+							$delStr .= "type = '$x->type' AND ";
+							echo "<br />";
+							echo "Salary: " . $x->salary;
+							$delStr .= "salary = $x->salary AND ";
+							echo "<br />";
+							echo "Days / Week: " . $x->daysPerWeek;
+							$delStr .= "daysPerWeek = $x->daysPerWeek AND ";
+							echo "<br />";
+							echo "Hours / Day: " . $x->hoursPerDay;
+							$delStr .= "hoursPerDay = $x->hoursPerDay";
+							echo "<br />";
+							echo "<a href = \"DeletePosts.php?query=$delStr\">Delete This Post</a>";
+							echo "<br />";
+						echo "</p>";
+						//echo $delStr;
+					echo "</div>";
+				}
+			?>
+		</div>
+
+		<div class = "viewpost">
+			<h4> Need Job Posts </h4>
+			<?php
+
+				$results = array();
+
+		    	$query = "SELECT * FROM NeedJob where owner = '" . $owner . "'";
+			  	$data = mysqli_query($db, $query);
+			  	//var_dump($data);
+			  	if (mysqli_num_rows($data) > 0) {
+			  		while ($row = mysqli_fetch_assoc($data)) {
+			  			$resultpg = new Job(
+			  				$row['location'], $row['interest'], 0,
+			  				0, $row['workingHours'], $row['owner']
+			  				);
+			  			array_push($results, $resultpg);
+			  		}
+			  	}
+
+				foreach ($results as $x) {
+					$delStr = "DELETE FROM NeedJob where owner = '" . $owner . "' AND ";
+					echo '<div class = "">';
+						echo "<p>";
+							echo "Location: " . $x->location;
+							$delStr .= "location = '$x->location' AND ";
+							echo "<br />";
+							echo "Interest: " . ucfirst($x->type);
+							$delStr .= "interest = '$x->type' AND ";
+							echo "<br />";
+							/*echo "Salary: " . $x->salary;
+							$delStr .= "salary = $x->salary AND ";
+							echo "<br />";
+							echo "Days / Week: " . $x->daysPerWeek;
+							$delStr .= "daysPerWeek = $x->daysPerWeek AND ";
+							echo "<br />";*/
+							echo "Working Hours / Day: " . $x->hoursPerDay;
+							$delStr .= "workingHours = $x->hoursPerDay";
+							echo "<br />";
 							echo "<a href = \"DeletePosts.php?query=$delStr\">Delete This Post</a>";
 							echo "<br />";
 						echo "</p>";
