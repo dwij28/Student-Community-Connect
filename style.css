@@ -1,9 +1,14 @@
 body {
-	background-color: #04686d;
+	background-color: #50a08b;
 }
 
 h3 {
-	color: #e59a04;
+	color: #08e02c;
+	font-weight: bolder;
+}
+
+h4 {
+	color: #08e02c;
 	font-weight: bolder;
 }
 
@@ -13,6 +18,16 @@ h3 {
 	border-color:black;
 	padding-top: 10px;
 	color: #dd1111;
+	font-weight: bolder;
+	padding-left: 35%;
+}
+
+.search {
+	border-width:2px;
+	border-style: dashed;
+	border-color:black;
+	padding-top: 10px;
+	color: #e7f943;
 	font-weight: bolder;
 	padding-left: 35%;
 }
