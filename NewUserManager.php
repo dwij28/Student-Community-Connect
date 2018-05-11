@@ -16,7 +16,7 @@
 
 	    	if (empty($emailID)) { array_push($errors, "Email ID is required"); }
 	    	else if (filter_var($emailID, FILTER_VALIDATE_EMAIL) === false) { array_push($errors, "Invalid Email ID"); }
-	    	//else if (user_exists($emailID, $db)) { array_push($errors, "Email ID already exists");}
+	    	else if (user_exists($emailID, $db)) { array_push($errors, "Email ID already exists");}
 
 	    	if (empty($password)) { array_push($errors, "Password is required"); }
 			if (strlen($password) < 4) { array_push($errors, "Password must have 4 or more characters"); }
@@ -62,7 +62,7 @@
 	    	
 		  	mysqli_query($db, $query);
 		  	$_SESSION['emailID'] = $emailID;
-		  	header("location: profile.php");
+		  	header("location: Profile.php");
 
 	    }
 
