@@ -24,8 +24,11 @@
 
             $query = "INSERT INTO GiveCoaching (location, subject, fees, daysPerWeek, session, owner) 
                       VALUES('$this->location', '$this->subject', $this->fees, $this->daysPerWeek, '$this->session', '$this->owner')";
+            
             mysqli_query($db, $query);
-            header("location: done.php");
+            $loc = urlencode($this->location);
+            $abc = urlencode($this->subject);
+            header("location: SuggestNeedCoaching.php?location=$loc&subject=$abc");
 
             return true;
 
@@ -35,8 +38,12 @@
 
             $query = "INSERT INTO TakeCoaching (location, subject, numOfStudents, owner) 
                       VALUES('$this->location', '$this->subject', $numOfStudents, '$this->owner')";
+            
             mysqli_query($db, $query);
-            header("location: done.php");
+            $loc = urlencode($this->location);
+            $abc = urlencode($this->subject);
+            header("location: SuggestProvideCoaching.php?location=$loc&subject=$abc");
+            
 
             return true;
 

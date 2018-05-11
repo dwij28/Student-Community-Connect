@@ -26,7 +26,9 @@
                       VALUES('$this->location', '$this->type', $this->salary, $this->daysPerWeek, $this->hoursPerDay, '$this->owner')";
 
             mysqli_query($db, $query);
-            header("location: done.php");
+            $loc = urlencode($this->location);
+            $abc = urlencode($this->type);
+            header("location: SuggestNeedJob.php?location=$loc&type=$abc");
 
             return true;
 
@@ -38,7 +40,9 @@
                       VALUES('$this->location', '$this->type', $this->hoursPerDay, '$this->owner')";
                       
             mysqli_query($db, $query);
-            header("location: done.php");
+            $loc = urlencode($this->location);
+            $abc = urlencode($this->type);
+            header("location: SuggestJobVacancy.php?location=$loc&type=$abc");
 
             return true;
 
