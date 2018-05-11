@@ -21,9 +21,9 @@
 
 	    }
 
-	    public function create($collegeName, $details, $db) {
+	    public function create($collegeName, $details, $owner, $db) {
 
-	    	$newachievement = new Achievement($collegeName, $details);
+	    	$newachievement = new Achievement($collegeName, $details, $owner);
 
 	    	$newachievement->create($db);
 

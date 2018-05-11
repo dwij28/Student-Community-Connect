@@ -22,7 +22,7 @@
 		$errors = $achievementmanager->validate($collegeName, $details, $user, $db);
 
 		if (count($errors) == 0) {
-			$achievementmanager->create($collegeName, $details, $db);
+			$achievementmanager->create($collegeName, $details, $user, $db);
 		}
 
 	}

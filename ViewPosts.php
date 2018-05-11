@@ -10,6 +10,8 @@
 	require_once 'Item.php';
 	require_once 'Tutor.php';
 	require_once 'Job.php';
+	require_once 'Achievement.php';
+	require_once 'Event.php';
 
 	//session_start();
 	//var_dump($_SESSION);
@@ -391,6 +393,84 @@
 							echo "<br />";*/
 							echo "Working Hours / Day: " . $x->hoursPerDay;
 							$delStr .= "workingHours = $x->hoursPerDay";
+							echo "<br />";
+							echo "<a href = \"DeletePosts.php?query=$delStr\">Delete This Post</a>";
+							echo "<br />";
+						echo "</p>";
+						//echo $delStr;
+					echo "</div>";
+				}
+			?>
+		</div>
+
+		<div class = "viewpost">
+			<h4> Achievement Posts </h4>
+			<?php
+
+				$results = array();
+
+		    	$query = "SELECT * FROM Achievement where owner = '" . $owner . "'";
+			  	$data = mysqli_query($db, $query);
+			  	//var_dump($data);
+			  	if (mysqli_num_rows($data) > 0) {
+			  		while ($row = mysqli_fetch_assoc($data)) {
+			  			$resultpg = new Achievement(
+			  				$row['collegeName'], $row['details'], $row['owner']
+			  				);
+			  			array_push($results, $resultpg);
+			  		}
+			  	}
+
+				foreach ($results as $x) {
+					$delStr = "DELETE FROM Achievement where owner = '" . $owner . "' AND ";
+					echo '<div class = "">';
+						echo "<p>";
+							echo "College Name: " . ucfirst($x->collegeName);
+							$delStr .= "collegeName = '$x->collegeName' AND ";
+							echo "<br />";
+							echo "Details: " . ucfirst($x->details);
+							$delStr .= "details = '$x->details'";
+							echo "<br />";
+							echo "<a href = \"DeletePosts.php?query=$delStr\">Delete This Post</a>";
+							echo "<br />";
+						echo "</p>";
+						//echo $delStr;
+					echo "</div>";
+				}
+			?>
+		</div>
+
+		<div class = "viewpost">
+			<h4> Event Posts </h4>
+			<?php
+
+				$results = array();
+
+		    	$query = "SELECT * FROM Event where organizer = '" . $owner . "'";
+			  	$data = mysqli_query($db, $query);
+			  	//var_dump($data);
+			  	if (mysqli_num_rows($data) > 0) {
+			  		while ($row = mysqli_fetch_assoc($data)) {
+			  			$resultevent = new Event(
+			  				$row['eventName'], $row['eventType'],
+			  				$row['details'], $row['organizer']
+			  				);
+			  			array_push($results, $resultevent);
+			  		}
+			  	}
+
+				foreach ($results as $x) {
+					$delStr = "DELETE FROM Event where organizer = '" . $owner . "' AND ";
+					echo '<div class = "">';
+						echo "<p>";
+							echo "Event Name: " . ucfirst($x->eventName);
+							$delStr .= "eventName = '$x->eventName' AND ";
+							echo "<br />";
+							echo "Event Type: " . ucfirst($x->eventType);
+							$delStr .= "eventType = '$x->eventType' AND ";
+							echo "<br />";
+							echo "Details: " . ucfirst($x->details);
+							$delStr .= "details = '$x->details'";
 							echo "<br />";
 							echo "<a href = \"DeletePosts.php?query=$delStr\">Delete This Post</a>";
 							echo "<br />";
