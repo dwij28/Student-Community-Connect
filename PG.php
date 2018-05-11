@@ -26,7 +26,9 @@
                       VALUES('$this->pgName', '$this->pgType', '$this->location',
                         $this->rent, $this->vacancy, '$this->owner')";
             mysqli_query($db, $query);
-            header("location: done.php");
+            $loc = urlencode($this->location);
+            $pgt = urlencode($this->pgType);
+            header("location: SuggestNeedPG.php?location=$loc&pgType=$pgt");
 
         }
 
@@ -35,8 +37,9 @@
             $query = "INSERT INTO NeedPG (pgType, location, rent, vacancy, owner) 
                       VALUES('$this->pgType', '$this->location',
                         $this->rent, $this->vacancy, '$this->owner')";
-            mysqli_query($db, $query);
-            header("location: done.php");
+            $loc = urlencode($this->location);
+            $pgt = urlencode($this->pgType);
+            header("location: SuggestPGVacancy.php?location=$loc&pgType=$pgt");
 
         }
 

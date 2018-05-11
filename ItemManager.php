@@ -39,7 +39,8 @@
 		  			  VALUES('$itemName', '$itemType', $quantity, $itemPrice, '$owner')";
 
 		  	mysqli_query($db, $query);
-		  	header("location: done.php");
+            $abc = urlencode($itemType);
+            header("location: SuggestNeedItem.php?itemType=$abc");
 
 	    }
 

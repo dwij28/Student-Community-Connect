@@ -22,9 +22,10 @@
             
             $query = "INSERT INTO NeedItem (itemName, itemType, owner) 
                       VALUES('$this->itemName', '$this->itemType', '$this->owner')";
-            if (mysqli_query($db, $query))
-                header("location: done.php");
-            else header("location: pleaselogin.php");
+            
+            mysqli_query($db, $query);
+            $abc = urlencode($this->itemType);
+            header("location: SuggestSellItem.php?itemType=$abc");
 
         }
 
