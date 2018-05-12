@@ -9,7 +9,7 @@
 
         function __construct($name, $emailID, $password, $age, $gender, $type, $address, $college) {
 
-            parent::__construct($name, $emailID, $age, $gender, $type);
+            parent::__construct($name, $emailID, $password, $age, $gender, $type);
 
             $this->address = $address;
             $this->college = $college;

@@ -15,7 +15,7 @@
 
             $result = $this->newitem->validateSell("CLRS",
                 "books", 5, 2000,
-                "abhi28.jha@gmail.com", $db);
+                "sanchitcv@gmail.com", $db);
 
             $this->assertEquals(array(), $result);
         }

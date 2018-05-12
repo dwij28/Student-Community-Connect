@@ -26,7 +26,7 @@
 		  	
 		  	if (mysqli_num_rows($results) == 1) {
 				$_SESSION['emailID'] = $emailID;
-				header("location: profile.php");
+				header("location: Profile.php");
 	  		}
 
 	    }

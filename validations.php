@@ -5,7 +5,7 @@
 	}
 
 	function user_exists($emailID, $db) {
-		$user_check_query = "SELECT * FROM user WHERE emailID = '$emailID' LIMIT 1";
+		$user_check_query = "SELECT * FROM User WHERE emailID = '$emailID' LIMIT 1";
 		$results = mysqli_query($db, $user_check_query);
 		return (mysqli_num_rows($results) > 0);
 	}

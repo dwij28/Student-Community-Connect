@@ -77,7 +77,7 @@
 		<div>
 			<?php
 				foreach ($results as $x) {
-					echo "<div>";
+					echo '<div class = "search">';
 						echo "<p>";
 							echo "Location: " . $x->location;
 							echo "<br />";

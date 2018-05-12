@@ -18,6 +18,18 @@
 
         }
 
+        public function createSell($db) {
+
+            $query = "INSERT INTO SellItem (itemName, itemType, quantity, itemPrice, owner) 
+                      VALUES('$this->itemName', '$this->itemType', $this->quantity,
+                        $this->itemPrice, '$this->owner')";
+
+            mysqli_query($db, $query);
+            $abc = urlencode($this->itemType);
+            header("location: SuggestNeedItem.php?itemType=$abc");
+
+        }
+
         public function createNeed($db) {
             
             $query = "INSERT INTO NeedItem (itemName, itemType, owner) 

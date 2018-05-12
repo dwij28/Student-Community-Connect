@@ -1,7 +1,7 @@
 <?php
 	
-	error_reporting(E_ALL);
-	ini_set("display_errors","On");
+	//error_reporting(E_ALL);
+	//ini_set("display_errors","On");
 	
 	include 'session_check.php';
 	require_once 'dbconnect.php';

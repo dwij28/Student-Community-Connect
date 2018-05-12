@@ -1,7 +1,7 @@
 <?php
 
-	error_reporting(E_ALL);
-	ini_set("display_errors","On");
+	//error_reporting(E_ALL);
+	//ini_set("display_errors","On");
 	
 	include 'session_check.php';
 	include 'utils.php';
@@ -79,7 +79,7 @@
 		<div>
 			<?php
 				foreach ($results as $x) {
-					echo "<div>";
+					echo '<div class = "search">';
 						echo "<p>";
 							echo "Location: " . $x->location;
 							echo "<br />";

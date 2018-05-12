@@ -1,7 +1,7 @@
 <?php
 
-	error_reporting(E_ALL);
-	ini_set("display_errors","On");
+	//error_reporting(E_ALL);
+	//ini_set("display_errors","On");
 	
 	include 'session_check.php';
 	include 'utils.php';
@@ -34,7 +34,7 @@
 <html>
 
 	<head>
-		<title>Search Event</title>
+		<title>Search Achievement</title>
 		<?php include 'links.html'; ?>
 	</head>
 
@@ -66,7 +66,7 @@
 		<div>
 			<?php
 				foreach ($results as $resultAchievement) {
-					echo "<div>";
+					echo '<div class = "search">';
 						echo "<p>";
 							echo "College Name: " . $resultAchievement->collegeName;
 							echo "<br />";

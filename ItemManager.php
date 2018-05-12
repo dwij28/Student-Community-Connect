@@ -35,12 +35,7 @@
 
 	    	$newitem = new Item($itemName, $itemType, $quantity, $itemPrice, $owner);
 
-			$query = "INSERT INTO SellItem (itemName, itemType, quantity, itemPrice, owner) 
-		  			  VALUES('$itemName', '$itemType', $quantity, $itemPrice, '$owner')";
-
-		  	mysqli_query($db, $query);
-            $abc = urlencode($itemType);
-            header("location: SuggestNeedItem.php?itemType=$abc");
+			$newitem->createSell($db);
 
 	    }
 

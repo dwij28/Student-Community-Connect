@@ -87,6 +87,26 @@
 
 			<br />
 
+			<form action = "ViewPosts.php">
+				
+				<div>
+					<button type = "submit" class = "btn btn-primary btn-lg btn-block">View My Posts</button>
+				</div>
+
+			</form>
+
+			<br />
+
+			<form action = "logout.php">
+				
+				<div>
+					<button type = "submit" class = "btn btn-primary btn-lg btn-block">Log Out</button>
+				</div>
+
+			</form>
+
+			<br />
+
 		</div>
 
 	</body>

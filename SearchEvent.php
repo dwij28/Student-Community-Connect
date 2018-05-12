@@ -70,7 +70,7 @@
 		<div>
 			<?php
 				foreach ($results as $resultEvent) {
-					echo "<div>";
+					echo '<div class = "search">';
 						echo "<p>";
 							echo "Event Name: " . $resultEvent->eventName;
 							echo "<br />";

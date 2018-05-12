@@ -13,8 +13,8 @@
 
             require_once 'dbconnect.php';
 
-            $result = $this->newachievement->validate("", "Bla.. Bla.. Bla..",
-                "abhi28.jha@gmail.com", $db);
+            $result = $this->newachievement->validate("IEM", "Bla.. Bla.. Bla..",
+                "sanchitcv@gmail.com", $db);
 
             $this->assertEquals(array(), $result);
         }

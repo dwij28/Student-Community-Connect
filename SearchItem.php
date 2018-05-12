@@ -1,7 +1,7 @@
 <?php
 
-	error_reporting(E_ALL);
-	ini_set("display_errors","On");
+	//error_reporting(E_ALL);
+	//ini_set("display_errors","On");
 	
 	include 'session_check.php';
 	include 'utils.php';
@@ -72,7 +72,7 @@
 		<div>
 			<?php
 				foreach ($results as $resultItem) {
-					echo "<div>";
+					echo '<div class = "search">';
 						echo "<p>";
 							echo "Item Name: " . $resultItem->itemName;
 							echo "<br />";
@@ -83,7 +83,7 @@
 							echo "Contact : <a href = '#'>". $resultItem->owner . "</a>";
 						echo "</p>";
 					echo "</div>";
-					echo "<hr />";
+					echo "<br />";
 				}
 				if (isset($_POST['submit']) && count($errors) == 0 && count($results) == 0) {
 					echo "<p>No Item available</p>";

@@ -35,13 +35,13 @@
 <html>
 
 	<head>
-		<title>Search Job</title>
+		<title>Search PG</title>
 		<?php include 'links.html'; ?>
 	</head>
 
 	<body>
 
-		<h3 class = "text-center">Search Job</h3>
+		<h3 class = "text-center">Search PG</h3>
 
 		<div class = "forms">
 			<?php include('errors.php'); ?>
@@ -75,7 +75,7 @@
 		<div>
 			<?php
 				foreach ($results as $x) {
-					echo "<div>";
+					echo '<div class = "search">';
 						echo "<p>";
 							echo "PG Name: " . $x->pgName;
 							echo "<br />";
